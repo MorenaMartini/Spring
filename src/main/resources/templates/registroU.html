@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+  <head th:replace= "/fragments/head :: head" ></head>
+
+    <body>
+        <div classs="container text-align-center" style=" width: 300px; margin: 0 auto;" >
+            <form align="center" th:action="@{/registro}" method="POST">
+                <p style="color: #ffffff; font-size: 30px " >
+                    Registrarse
+                </p>
+
+                <div class="mb-3">
+                    <label style="color:aliceblue" class="form-label"></label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" th:value="${nombre}" placeholder="Nombre">
+                    <div class="mb-3">
+                        <label style="color:aliceblue" for="exampleInputEmail1" class="form-label"></label>
+                        <input type="email" class="form-control" id="email" th:value="${email}" aria-describedby="emailHelp" name="email" placeholder="Email">
+                    </div>
+                    <div class="mb-3">
+                        <label style="color:aliceblue" for="exampleInputPassword1" class="form-label"></label>
+                        <input type="password" class="form-control" id="contraseña" th:value="${contrasena}" name="contrasena" placeholder="Contraseña">
+                    </div>
+                    <div class="mb-3">
+                        <label style="color:aliceblue" class="form-label"></label>
+                        <input type="password" class="form-control" id="contraseña2" th:value="${contrasena2}" aria-describedby="emailHelp" name="contrasena2" placeholder="Repetir contraseña">
+                    </div>
+                    <div>
+                        <div th:if="${error != null}"  class="card text-white bg-danger my-3 mensajeError" > <!--Tarjeta en color rojo con una condicion-->
+                            <!--$ se usa para el envio de variables y todo lor valores van entre llaves-->
+                            <div class="card-body">
+                                <h5 class="card-title">Error</h5>
+                                <p class="card-text" th:text="${error}"></p>
+                            </div>            
+                        </div>
+
+                        <div th:if="${exito != null}"  class="card text-white bg-success my-3 mt-3 mensajeExito" >
+                            <div class="card-body">
+                                <h5 class="card-title">Exito</h5>
+                                <p class="card-text" th:text="${exito}"></p>
+                            </div> 
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+            </form>
+        </div>
+
+
+    </body>
+
+</html>

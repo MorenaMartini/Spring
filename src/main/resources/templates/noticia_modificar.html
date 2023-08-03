@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+     <head th:replace= "/fragments/head :: head" ></head>
+    <body>
+        <div align="center" class="container-fluid m-5 contenedor">
+            <form style="color: beige" class="formulario" th:action="@{/noticias/modificar/__${noticia.id}__}" method="POST">
+                <input hidden th:value="${noticia.id}" name="id">
+
+                <div class="form-group my-3">
+                    <label class="mb-2">Cargar Noticias</label>
+                    <input th:value="${noticia.titulo}" type="text" class="form-control" name="titulo">
+                    <input th:value="${noticia.cuerpo}" type="text" class="form-control" name="cuerpo">
+                </div>
+
+                <div><button align="center" type="submit" class="btn btn-primary mt-3 botones">Actualizar</button></div>
+
+            </form>
+            <div>
+                <a align="center" th:href="@{/noticias/}" type="back" class="btn btn-primary my-1">Volver</a>
+
+                <a align="center" th:href="@{/noticias/borrar/__${noticia.id}__}" class="btn btn-primary">Eliminar</a>
+            </div>
+
+
+
+
+    </body>
+</html>

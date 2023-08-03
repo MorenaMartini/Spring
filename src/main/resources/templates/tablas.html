@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace= "/fragments/head :: head" ></head>
+
+    <body>
+        <div  class="container m-5">
+            <table  class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Id de la noticia</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Cuerpo</th>
+                        <th scope="col" sec:authorize="hasRole('ADMIN')">Acciones</th>
+                    </tr>
+                </thead > 
+    
+                <tbody ALIGN="left" th:each="noticia:${noticias}"> <!-- iteracion -->
+                    <tr>
+                        <th scope="row" th:text="${noticia.id}"></th>
+                        <td th:text="${noticia.titulo}"></td>
+                        <td th:text="${noticia.cuerpo}"></td>
+                        <td>
+                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/noticias/modificar/__${noticia.id}__}"><i class="fas fa-feather-alt"></i>🍌 Modificar</a>
+                        </td>
+                    </tr>
+                    
+    
+                </tbody>
+                
+            </table>
+            <a align="center" th:href="@{/noticias/}"><button  type="back" class="btn btn-primary">Volver</button></a>
+            
+    
+        </div>
+    </body>
+
+ 
+</html>

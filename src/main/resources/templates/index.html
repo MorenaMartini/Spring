@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+     <head th:replace= "/fragments/head :: head" ></head>
+    <body>
+        <header> 
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            <div align="center" class="container">
+                <h2 style="color:cadetblue" >Cree La Noticia aqui!</h2>
+
+            </div>
+        </header>
+        <div align="center" class="container-fluid m-5 contenedor">
+            <form th:action="@{/noticias/registro}" method="POST">
+
+
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label"></label>
+                    <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo"> <!--envia datos encerrados en una variable que se llama nombre --> 
+                </div>
+  
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label"></label>
+                    <input type="text" class="form-control" id="cuerpo" name="cuerpo" placeholder="Cuerpo"> <!--envia datos encerrados en una variable que se llama nombre --> 
+                </div>
+
+
+                <!-- th = thymeleaf-->
+                <div>
+                    <div th:if="${error != null}"  class="card text-white bg-danger my-3 mensajeError" > <!--Tarjeta en color rojo con una condicion-->
+                        <!--$ se usa para el envio de variables y todo lor valores van entre llaves-->
+                        <div class="card-body">
+                            <h5 class="card-title">Error</h5>
+                            <p class="card-text" th:text="${error}"></p>
+                        </div>            
+                    </div>
+
+                    <div th:if="${exito != null}"  class="card text-white bg-success my-3 mt-3 mensajeExito" >
+                        <div class="card-body">
+                            <h5 class="card-title">Exito</h5>
+                            <p class="card-text" th:text="${exito}"></p>
+                        </div> 
+                    </div>
+                </div>
+
+
+
+
+                <button type="submit" class="btn btn-primary mt-3 botones">Guardar</button>
+
+            </form>
+
+            <a align="center" th:href="@{/noticias/}"><button  type="back" class="btn btn-primary">Volver</button></a>
+            <a align="center" th:href="@{/noticias/lista}"><button  type="back" class="btn btn-primary">Listado</button></a>
+
+        </div>
+    </body>
+</html>

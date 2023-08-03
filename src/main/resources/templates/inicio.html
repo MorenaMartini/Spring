@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace= "/fragments/head :: head" ></head>
+    <body>
+        <div>
+            <a th:text="'Error ' + ${codigo}">BIBLOTECA EGG</a>
+            <p th:text="${mensaje}"></p>
+        </div>
+        <script type="text/javascript">
+            alert("Hola desde el head");
+        </script>
+
+        <div align="center">
+            <p style="color: cornsilk" th:if="${session.usuariosession != null}" th:text=" 'Bienvenid@ de vuelta ' + ${session.usuariosession.nombre} "></p>
+            <a  th:if="${session.usuariosession != null}" th:href="@{/noticias/registro}"><button  type="submit" class="btn btn-primary">Subir Una Nueva Noticia</button></a>
+            <a th:if="${session.usuariosession == null}" th:href="@{/registrar}"><button  type="submit" class="btn btn-primary">Registrate!</button></a>
+            <a th:if="${session.usuariosession == null}" th:href="@{/login}"><button  type="submit" class="btn btn-primary">Login</button></a>
+        </div>
+
+        <div th:if="${error != null}"  class="card text-white bg-danger my-3 mensajeError"> <!--Tarjeta en color rojo con una condicion-->
+            <!--$ se usa para el envio de variables y todo lor valores van entre llaves-->
+            <div class="card-body">
+                <h5 class="card-title">Error</h5>
+                <p class="card-text" th:text="${error}"></p>
+            </div>            
+        </div>
+
+        <div th:if="${exito != null}"  class="card text-white bg-success my-3 mensajeExito" >
+            <div class="card-body">
+                <h5 class="card-title">Exito</h5>
+                <p class="card-text" th:text="${exito}"></p>
+            </div> 
+        </div>
+
+    </body>
+</html>
